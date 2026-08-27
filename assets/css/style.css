@@ -524,6 +524,10 @@ a {
   z-index: 5;
   border: 1px solid rgba(255, 255, 255, 0.2);
   letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .product-slider-track {
@@ -870,6 +874,11 @@ a {
   background: var(--surface-container-low);
   padding: 3px 10px;
   border-radius: var(--rounded-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .discount-pill {
@@ -880,6 +889,11 @@ a {
   padding: 4px 12px;
   border-radius: var(--rounded-full);
   box-shadow: 0 2px 8px rgba(238, 108, 29, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .price-body {
@@ -938,6 +952,8 @@ a {
 .savings-tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 6px;
   background: var(--tertiary-fixed);
   border: 1px solid rgba(238, 108, 29, 0.25);
@@ -946,6 +962,7 @@ a {
   border-radius: var(--rounded-default);
   font-size: 0.84rem;
   width: fit-content;
+  line-height: 1.2;
 }
 
 .savings-tag strong {
@@ -1275,6 +1292,8 @@ a {
 .single-offer-tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 6px;
   font-size: 0.78rem;
   font-weight: 600;
@@ -1283,6 +1302,7 @@ a {
   border: 1px solid var(--surface-container-high);
   padding: 3px 10px;
   border-radius: var(--rounded-full);
+  line-height: 1.2;
 }
 
 .pulse-spark {
@@ -1302,6 +1322,11 @@ a {
   padding: 3px 12px;
   border-radius: var(--rounded-full);
   box-shadow: 0 2px 8px rgba(238, 108, 29, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .single-offer-main {
@@ -2224,8 +2249,14 @@ a {
   color: var(--on-secondary-fixed-variant);
   font-size: 0.68rem;
   font-weight: 700;
-  padding: 1px 6px;
+  padding: 2px 8px;
   border-radius: var(--rounded-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .sticky-cta-area {
@@ -2451,6 +2482,12 @@ a {
   box-shadow: 0 4px 12px rgba(238, 108, 29, 0.4);
   white-space: nowrap;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  line-height: 1.2;
   animation: badgeBounce 2s infinite ease-in-out;
 }
 
