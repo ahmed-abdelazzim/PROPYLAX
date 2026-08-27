@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>PROPYLAX GEL | دهان موضعي مهدئ للمفاصل والركبة - عرض خاص</title>
+  <meta name="description" content="احصل على دهان بروبيلاكس جل (PROPYLAX GEL) الموضعي للمفاصل والركبة والظهر والرقبة. تركيبة خفيفة سريعة الامتصاص. اطلب الآن بخصم 25% والدفع عند الاستلام.">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="PROPYLAX GEL | دهان موضعي للمفاصل">
+  <meta property="og:description" content="خفّف ضغط يومك على ركبتك ومفاصلك مع PROPYLAX GEL - عرض أغسطس 2026 الحصري">
+  <meta property="og:image" content="assets/images/propylax-box.jpg">
+  
+  <!-- Modern Arabic Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Medical Background Canvas & Glows -->
+  <div class="medical-bg-system" aria-hidden="true">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+    <div class="ambient-grid-lines"></div>
+    <div class="floating-medical-particles" id="particlesContainer"></div>
+  </div>
+
+  <main class="landing-container">
+
+    <!-- ==========================================
+         SECTION 1: HERO & PRODUCT OFFER
+         ========================================== -->
+    <section id="hero-section" class="section hero-section">
+      <div class="section-wrapper">
+
+        <!-- Top Best Seller Badge (Mobile Order #1) -->
+        <div class="top-badge-wrapper">
+          <div class="best-seller-badge" id="bestSellerBadge">
+            <span class="badge-fire-icon">🔥</span>
+            <span class="badge-text">المنتج الأكثر مبيعاً خلال أغسطس 2026</span>
+            <span class="badge-pulse-dot"></span>
+          </div>
+        </div>
+
+        <!-- Master Panoramic Hero Banner (Clickable -> Scrolls to Order Section) -->
+        <div class="hero-panoramic-banner">
+          <a href="#order-section" class="banner-link-action" aria-label="اضغط هنا لتأكيد طلبك والانتقال إلى نموذج الحجز">
+            <div class="banner-frame-glass">
+              <picture>
+                <source srcset="assets/images/propylax-hero-banner.webp" type="image/webp">
+                <img src="assets/images/propylax-hero-banner.png" alt="إكتشف قوة PROPYLAX GEL - اضغط هنا لطلب المنتج" class="banner-media" loading="eager">
+              </picture>
+              <div class="banner-ambient-glow"></div>
+              <div class="banner-click-hint">
+                <span class="hint-pulse-dot"></span>
+                <span>اضغط هنا لتأكيد طلبك الآن</span>
+                <span class="hint-arrow">←</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="hero-grid">
+
+          <!-- Left Column (Desktop Content) -->
+          <div class="hero-content-column">
+
+            <!-- Product Name / Small Label (Mobile Order #2) -->
+            <div class="product-sub-brand">
+              <span class="brand-pill">دهان موضعي للمفاصل • 100GM</span>
+              <span class="brand-name">PROPYLAX GEL</span>
+            </div>
+
+            <!-- Main Headline (Mobile Order #3) -->
+            <h1 class="main-headline">
+              خفّف ضغط يومك على <span class="highlight-text">ركبتك ومفاصلك</span> ورجع شبابك وحيويتك
+            </h1>
+
+            <!-- Short Supporting Text (Mobile Order #4) -->
+            <p class="supporting-text">
+              تركيبة جل موضعية سريعة الامتصاص، مخصصة لعلاج الخشونة والتقل في مناطق 
+              <strong>الركبة، الظهر، والرقبة</strong>، لتمنحك إحساساً بالخفة والحركة السلسة بشكل فعال وفوري.
+            </p>
+
+            <!-- Product Visual Showcase (Mobile Order #5 — displayed here on mobile via order/flow) -->
+            <div class="product-showcase-card mobile-visual-inline">
+              
+              <!-- Ambient Halo & Radial Spotlights -->
+              <div class="product-glow-halo"></div>
+              
+              <!-- Interactive Visual Container -->
+              <div class="product-stage">
+                
+                <!-- 3D Pedestal Platform -->
+                <div class="pedestal-base"></div>
+                
+                <!-- Interactive Product Image Slider Container -->
+                <div class="product-slider-wrapper" id="productSliderWrapper">
+                  
+                  <!-- Slider Track & Stage -->
+                  <div class="product-slider-track" id="productSliderTrack">
+
+                    <!-- Top Image Counter Pill -->
+                    <div class="slider-counter-badge" id="sliderCounterBadge">
+                      <span id="currentSlideNum">1</span> / <span>3</span>
+                    </div>
+
+                    <!-- Previous Slide Button (Right side) -->
+                    <button type="button" class="slider-arrow slider-prev" id="sliderPrevBtn" aria-label="الصورة السابقة">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+                    
+                    <!-- Slide 1 -->
+                    <div class="slider-slide active" data-slide="0">
+                      <picture>
+                        <source srcset="assets/images/propylax-product-1.webp" type="image/webp">
+                        <img src="assets/images/propylax-product-1.jpg" alt="دهان بروبيلاكس جل PROPYLAX GEL 100GM - العرض الأساسي" class="product-hero-media" loading="eager">
+                      </picture>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slider-slide" data-slide="1">
+                      <picture>
+                        <source srcset="assets/images/propylax-product-2.webp" type="image/webp">
+                        <img src="assets/images/propylax-product-2.jpg" alt="دهان PROPYLAX GEL بتركيبة الجل الفعالة" class="product-hero-media" loading="lazy">
+                      </picture>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slider-slide" data-slide="2">
+                      <picture>
+                        <source srcset="assets/images/propylax-product-3.webp" type="image/webp">
+                        <img src="assets/images/propylax-product-3.jpg" alt="عبوة وأنبوب دهان PROPYLAX GEL 100GM" class="product-hero-media" loading="lazy">
+                      </picture>
+                    </div>
+
+                    <!-- Next Slide Button (Left side) -->
+                    <button type="button" class="slider-arrow slider-next" id="sliderNextBtn" aria-label="الصورة التالية">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
+                    </button>
+
+                  </div>
+
+                  <!-- Slider Pagination Indicator Dots -->
+                  <div class="slider-dots-container" id="sliderDotsContainer">
+                    <button type="button" class="slider-dot active" data-index="0" aria-label="الانتقال إلى الصورة 1"></button>
+                    <button type="button" class="slider-dot" data-index="1" aria-label="الانتقال إلى الصورة 2"></button>
+                    <button type="button" class="slider-dot" data-index="2" aria-label="الانتقال إلى الصورة 3"></button>
+                  </div>
+
+                </div>
+
+                <!-- Interactive Mini Thumbnails Row -->
+                <div class="slider-thumbnails-row" id="sliderThumbs">
+                  <button type="button" class="slider-thumb-item active" data-index="0" aria-label="عرض الصورة 1">
+                    <img src="assets/images/propylax-product-1.webp" alt="معاينة 1" class="thumb-img">
+                  </button>
+                  <button type="button" class="slider-thumb-item" data-index="1" aria-label="عرض الصورة 2">
+                    <img src="assets/images/propylax-product-2.webp" alt="معاينة 2" class="thumb-img">
+                  </button>
+                  <button type="button" class="slider-thumb-item" data-index="2" aria-label="عرض الصورة 3">
+                    <img src="assets/images/propylax-product-3.webp" alt="معاينة 3" class="thumb-img">
+                  </button>
+                </div>
+
+                <!-- Product Spec Tags -->
+                <div class="product-quick-specs">
+                  <span class="spec-chip">💧 ملمس جل ناعم</span>
+                  <span class="spec-chip">⚖️ عبوة 100 جرام</span>
+                  <span class="spec-chip">🌿 لطيف على البشرة</span>
+                </div>
+
+                <!-- Integrated Mobility Experience Demo Card -->
+                <div class="mobility-experience-card">
+                  <div class="exp-header">
+                    <div class="exp-badge">
+                      <span class="exp-dot"></span>
+                      <span>شاهد تجربة التدليك الموضعي على الركبة</span>
+                    </div>
+                  </div>
+                  <div class="exp-content">
+                    <div class="exp-media-wrap">
+                      <picture>
+                        <source srcset="assets/images/joint-relief-demo.webp" type="image/webp">
+                        <img src="assets/images/joint-relief-demo.gif" alt="تجربة استعادة سهولة الوقوف وراحة الركبة" class="exp-gif-media" loading="lazy">
+                      </picture>
+                      <div class="exp-play-indicator">
+                        <span>▶ تجربة حية</span>
+                      </div>
+                    </div>
+                    <div class="exp-text-wrap">
+                      <p class="exp-caption">
+                        <strong>راحة ملموسة وانسيابية في الحركة:</strong> 
+                        تدليك موضعي خفيف يساعد في تهدئة إجهاد المفاصل والركبة لتستمتع بالوقوف والحركة براحة وسلاسة.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Quick Benefits (Mobile Order #6) -->
+            <div class="quick-benefits-list">
+              <div class="benefit-item">
+                <div class="benefit-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                </div>
+                <div class="benefit-text">
+                  <strong>امتصاص موضعي سريع:</strong> ملمس جل خفيف وسلس ينفذ بسهولة دون أن يترك بقايا لزجة.
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <div class="benefit-icon-box target-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                  </svg>
+                </div>
+                <div class="benefit-text">
+                  <strong>عناية مستهدفة للمفاصل:</strong> مثالي لمنطقة الركبة الأساسية، فقرات الظهر، وعضلات الرقبة.
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <div class="benefit-icon-box easy-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <div class="benefit-text">
+                  <strong>سهل ولطيف على البشرة:</strong> مناسب للاستخدام الموضعي اليومي بكل سلاسة عند الحاجة.
+                </div>
+              </div>
+            </div>
+
+            <!-- Price & Offer Card (Mobile Order #7, #8, #9) -->
+            <div class="price-offer-card">
+              <div class="price-header">
+                <span class="price-badge-label">عرض محدود لفترة وجيزة</span>
+                <div class="discount-pill">خصم 25% 🔥</div>
+              </div>
+
+              <div class="price-body">
+                <div class="price-figures">
+                  <div class="current-price-wrap">
+                    <span class="price-amount" id="heroPriceCurrent">420</span>
+                    <span class="price-currency">جنيه مصري</span>
+                  </div>
+                  <div class="old-price-wrap">
+                    <span class="old-price-label">السعر السابق:</span>
+                    <span class="old-price-amount" id="heroPriceOld">560 ج.م</span>
+                  </div>
+                </div>
+                
+                <div class="savings-tag">
+                  <span class="save-icon">💰</span>
+                  <span class="save-text">وفرت اليوم: <strong>140 جنيه</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Countdown Timer Card (Mobile Order #10) -->
+            <div class="countdown-card">
+              <div class="countdown-header">
+                <div class="timer-pulse-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <span class="countdown-title">العرض الحالي ينتهي خلال:</span>
+              </div>
+
+              <div class="countdown-display" id="countdownDisplay" aria-live="polite">
+                <div class="timer-box">
+                  <span class="timer-num" id="timerMinutes">25</span>
+                  <span class="timer-label">دقيقة</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-box">
+                  <span class="timer-num" id="timerSeconds">00</span>
+                  <span class="timer-label">ثانية</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live View Social Activity (Mobile Order #11) -->
+            <div class="live-view-bar" id="liveViewBar" aria-live="polite">
+              <div class="live-pulse-wrapper">
+                <span class="live-dot"></span>
+                <span class="live-dot-ping"></span>
+              </div>
+              <div class="live-text">
+                <span class="live-eye-icon">👁</span>
+                <span class="live-number" id="liveCount">17</span>
+                <span class="live-suffix">شخصاً يشاهدون هذه الصفحة الآن</span>
+              </div>
+            </div>
+
+            <!-- Primary CTA Button (Mobile Order #12) -->
+            <div class="hero-cta-container">
+              <a href="#order-section" class="btn-primary-cta" id="heroCtaBtn">
+                <span class="cta-shine"></span>
+                <span class="cta-main-text">اطلب الآن — الدفع عند الاستلام</span>
+                <span class="cta-arrow-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                </span>
+              </a>
+              
+              <div class="cta-subtext">
+                ⚡ سجل بياناتك وسنتواصل معك هاتفياً لتأكيد شحن طلبك
+              </div>
+            </div>
+
+            <!-- Trust Micro-Cues -->
+            <div class="trust-micro-cues">
+              <div class="trust-cue">
+                <span class="cue-check">✓</span>
+                <span>طلب سريع في أقل من دقيقة</span>
+              </div>
+              <div class="trust-cue">
+                <span class="cue-check">✓</span>
+                <span>الدفع نقداً بعد المعاينة</span>
+              </div>
+              <div class="trust-cue">
+                <span class="cue-check">✓</span>
+                <span>بياناتك لتأكيد الطلب فقط</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 1.5: VERIFIED CUSTOMER REVIEWS
+         ========================================== -->
+    <section id="reviews-section" class="section reviews-section">
+      <div class="section-wrapper">
+        <div class="section-header-center">
+          <div class="reviews-rating-summary">
+            <div class="stars-gold">★★★★★</div>
+            <span class="rating-number">4.9 / 5</span>
+            <span class="rating-count">(أكثر من 9,400+ مستخدم في مصر)</span>
+          </div>
+          <h2 class="section-main-title">تجارب حقيقية لراحة الركبة والمفاصل</h2>
+          <p class="section-sub-title">شاهد ماذا يقول عملاؤنا بعد استخدام دهان PROPYLAX GEL للعناية بالركبة والظهر:</p>
+        </div>
+
+        <div class="reviews-grid">
+          
+          <!-- Review 1 -->
+          <div class="review-card">
+            <div class="review-top">
+              <div class="reviewer-avatar">د.و</div>
+              <div class="reviewer-meta">
+                <strong class="reviewer-name">د. وائل عبدالرحمن</strong>
+                <span class="reviewer-loc">القاهرة • صيدلي</span>
+              </div>
+              <div class="verified-tag">
+                <span class="verified-check">✓</span>
+                <span>شراء مؤكد</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-body">
+              "بحكم وقوفي لساعات طويلة في الصيدلية كنت بعاني من ثقل وخشونة في الركبة. جل بروبيلاكس ملمسه خفيف جداً وسريع الامتصاص، وفرق معايا جداً في راحة المفصل وسهولة الحركة من أول أسبوع."
+            </p>
+            <div class="review-footer-badge">✨ راحة ملحوظة عند المشي والوقوف</div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="review-card">
+            <div class="review-top">
+              <div class="reviewer-avatar avatar-purple">م.ش</div>
+              <div class="reviewer-meta">
+                <strong class="reviewer-name">أ. مروة الشاذلي</strong>
+                <span class="reviewer-loc">الإسكندرية • مهندسة</span>
+              </div>
+              <div class="verified-tag">
+                <span class="verified-check">✓</span>
+                <span>شراء مؤكد</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-body">
+              "ممتاز جداً لإجهاد أسفل الظهر والرقبة بعد يوم عمل طويل أمام الكمبيوتر. الأهم بالنسبالي إنه بدون رائحة نفاذة ومابيسيبش أي أثر دهني على الجلد أو الهدوم."
+            </p>
+            <div class="review-footer-badge">🌿 ملمس ناعم بدون لزوجة</div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="review-card">
+            <div class="review-top">
+              <div class="reviewer-avatar avatar-blue">م.س</div>
+              <div class="reviewer-meta">
+                <strong class="reviewer-name">الحاج محمود السعيد</strong>
+                <span class="reviewer-loc">المنصورة • 58 سنة</span>
+              </div>
+              <div class="verified-tag">
+                <span class="verified-check">✓</span>
+                <span>شراء مؤكد</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-body">
+              "كنت بستصعب نزول وطلوع السلالم بسبب خشونة الركبة، التدليك بدهان بروبيلاكس مرتين في اليوم ريح الركبة وخلاني أمشي بسلاسة ومن غير ثقل. تجربة ممتازة والتوصيل كان سريع."
+            </p>
+            <div class="review-footer-badge">⚡ سهولة الحركة وصعود السلالم</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 1.6: MEDICAL FAQ ACCORDION
+         ========================================== -->
+    <section id="faq-section" class="section faq-section">
+      <div class="section-wrapper">
+        <div class="section-header-center">
+          <span class="faq-badge">إجابات استفساراتك</span>
+          <h2 class="section-main-title">الأسئلة الأكثر شيوعاً</h2>
+          <p class="section-sub-title">كل ما تود معرفته عن دهان PROPYLAX GEL وطريقة استخدامه وشحنه:</p>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+
+          <!-- FAQ 1 -->
+          <div class="faq-item active">
+            <button type="button" class="faq-question" aria-expanded="true">
+              <span class="faq-q-text">ما هي الطريقة الصحيحة لاستخدام دهان PROPYLAX GEL؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                توضع كمية مناسبة بحجم عقلة الإصبع على منطقة الركبة أو الظهر أو الرقبة، وتُدلك بحركات دائرية خفيفة لمدة دقيقة إلى دقيقتين حتى تمتصه البشرة تماماً. يُنصح باستخدامه من 2 إلى 3 مرات يومياً للحصول على أفضل راحة وانسيابية.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">هل يترك الجل أي ملمس دهني أو رائحة نفاذة؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                إطلاقاً! تركيبة PROPYLAX GEL مائية متطورة وسريعة الامتصاص تنفذ لطبقات الجلد العليا مباشرة دون ترك أي طبقة دهنية أو لزوجة، وبرائحة أعشاب منعشة وخفيفة جداً تختفي سريعاً ولا تسبب أي إزعاج.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">متى أبدأ بالشعور بالراحة وانسيابية الحركة في المفصل؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                ستشعر بإحساس مهدئ وتلطيف مباشر في المنطقة المجهدة خلال دقائق من التدليك، ومع الانتظام اليومي ستلاحظ تحسناً ملحوظاً في سهولة الوقوف والمشي وخفة حركة المفصل.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">كيف يتم الاستلام وتأكيد الطلب؟ وهل يمكنني معاينة المنتج قبل الدفع؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                بمجرد إدخال اسمك ورقم هاتفك في النموذج أدناه، سيتصل بك فريق خدمة العملاء لتأكيد بيانات العنوان وموعد الشحن. الدفع نقداً عند الاستلام (COD) بالكامل، ويحق لك استلام ومعاينة العبوة والتأكد منها بنفسك قبل السداد.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: ORDER FORM & CONFIRMATION
+         ========================================== -->
+    <section id="order-section" class="section order-section">
+      <div class="section-wrapper order-section-wrapper">
+
+        <!-- Form Card Container -->
+        <div class="order-card-glass" id="orderCardGlass">
+
+          <!-- Default Form State (Initial) -->
+          <div class="order-form-view" id="orderFormView">
+            
+            <div class="order-card-header">
+              <h2 class="order-title">أكّد طلبك الآن</h2>
+              <p class="order-subtitle">
+                أدخل اسمك ورقم الموبايل وسنتواصل معك لتأكيد الطلب والشحن مباشرة.
+              </p>
+            </div>
+
+            <!-- Main Single Offer Card -->
+            <div class="single-offer-banner">
+              <div class="single-offer-top">
+                <div class="single-offer-tag">
+                  <span class="pulse-spark">✨</span>
+                  <span>عرض محدود لفترة وجيزة</span>
+                </div>
+                <div class="single-offer-discount-pill">خصم 25% 🔥</div>
+              </div>
+
+              <div class="single-offer-main">
+                <div class="single-offer-visual-col">
+                  <div class="single-offer-badge-box">
+                    <span class="single-offer-icon">🧴</span>
+                  </div>
+                  <div class="single-offer-details">
+                    <div class="single-offer-title">عبوة واحدة (100GM)</div>
+                  </div>
+                </div>
+
+                <div class="single-offer-price-col">
+                  <div class="single-offer-price-wrap">
+                    <span class="single-offer-amount">420</span>
+                    <span class="single-offer-currency">جنيه مصري</span>
+                  </div>
+                  <div class="single-offer-old-wrap">
+                    <span class="single-offer-old-label">السعر السابق:</span>
+                    <span class="single-offer-old-val">560 ج.م</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="single-offer-saving-bar">
+                <span class="saving-icon">💰</span>
+                <span class="saving-text">وفرت اليوم: <strong>140 جنيه</strong></span>
+              </div>
+            </div>
+
+            <!-- The Direct Input Form -->
+            <form id="directOrderForm" class="direct-order-form" novalidate>
+              <input type="hidden" name="order_package" id="orderPackageInput" value="1">
+
+              <!-- Full Name Field -->
+              <div class="form-group" id="groupName">
+                <label for="customerName" class="form-label">
+                  <span>الاسم بالكامل</span>
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-with-icon">
+                  <span class="field-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </span>
+                  <input 
+                    type="text" 
+                    id="customerName" 
+                    name="customer_name" 
+                    class="form-input" 
+                    placeholder="مثال: أحمد محمد محمود" 
+                    required 
+                    autocomplete="name"
+                    minlength="3"
+                  >
+                  <span class="input-valid-badge" id="nameValidBadge">✓</span>
+                </div>
+                <div class="form-field-error" id="nameError">يرجى كتابة الاسم الثلاثي أو الثنائي بشكل صحيح.</div>
+              </div>
+
+              <!-- Mobile Phone Field -->
+              <div class="form-group" id="groupPhone">
+                <label for="customerPhone" class="form-label">
+                  <span>رقم الموبايل</span>
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-with-icon phone-input-container">
+                  <span class="field-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                      <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                  </span>
+                  <input 
+                    type="tel" 
+                    id="customerPhone" 
+                    name="customer_phone" 
+                    class="form-input phone-input" 
+                    placeholder="مثال: 01012345678 (11 رقم)" 
+                    required 
+                    dir="rtl"
+                    inputmode="numeric"
+                    maxlength="14"
+                    autocomplete="tel"
+                  >
+                  <span class="input-valid-badge" id="phoneValidBadge">✓</span>
+                  <span class="carrier-pill" id="carrierPill" style="display:none;"></span>
+                </div>
+                <div class="form-field-error" id="phoneError">يرجى إدخال رقم هاتف مصري صحيح يبدأ بـ (010, 011, 012, 015) مكون من 11 رقماً.</div>
+              </div>
+
+              <!-- Final Price Display inside the Form Card -->
+              <div class="final-order-summary">
+                <div class="summary-line">
+                  <span class="summary-label">المنتج المحدد:</span>
+                  <span class="summary-val" id="summaryProductText">دهان PROPYLAX GEL (عبوة 100GM)</span>
+                </div>
+                
+                <div class="summary-line">
+                  <span class="summary-label">السعر قبل الخصم:</span>
+                  <span class="summary-val strikethrough" id="summaryOldPrice">560 جنيه</span>
+                </div>
+
+                <div class="summary-line savings-highlight">
+                  <span class="summary-label">قيمة التوفير الإجمالية:</span>
+                  <span class="summary-val" id="summarySavings">140 جنيه (خصم 25%)</span>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total-line">
+                  <div class="total-label-block">
+                    <span class="total-title">الإجمالي المطلوب للدفع:</span>
+                    <span class="total-subtitle">نقداً عند الاستلام والمعاينة</span>
+                  </div>
+                  <div class="total-price-block">
+                    <span class="total-amount" id="summaryFinalPrice">420</span>
+                    <span class="total-curr">جنيه</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Final Submit CTA Button -->
+              <div class="form-submit-wrapper">
+                <button type="submit" class="btn-confirm-order" id="submitOrderBtn">
+                  <span class="btn-spinner" id="btnSpinner" style="display:none;"></span>
+                  <span class="btn-text" id="btnText">تأكيد الطلب الآن 📦</span>
+                </button>
+              </div>
+
+              <!-- Low-Friction Privacy & COD Notice -->
+              <div class="form-security-footer">
+                <div class="security-item">
+                  <span class="sec-icon">🔒</span>
+                  <span>بياناتك في أمان تام ولا تُشارك مع أي طرف آخر.</span>
+                </div>
+                <div class="security-item">
+                  <span class="sec-icon">🤝</span>
+                  <span>لا تحتاج لبطاقة بنكية — الدفع عند الاستلام.</span>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- Success State View (Revealed after submission) -->
+          <div class="order-success-view" id="orderSuccessView" style="display:none;" aria-live="assertive">
+            <div class="success-content">
+              
+              <div class="success-animation-wrapper">
+                <div class="success-circle-outer"></div>
+                <div class="success-circle-inner">
+                  <svg class="checkmark-svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="24" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="success-badge">تم استلام طلبك بنجاح 🎉</span>
+              
+              <h3 class="success-heading">
+                شكراً لك، <span class="customer-highlight-name" id="successCustomerName">يا فندم</span>!
+              </h3>
+              
+              <p class="success-message">
+                سيتواصل معك فريق خدمة العملاء على الرقم 
+                <strong dir="ltr" class="customer-highlight-phone" id="successCustomerPhone">01xxxxxxxxx</strong> 
+                خلال وقت قصير جداً لتأكيد تفاصيل العنوان وموعد الاستلام.
+              </p>
+
+              <!-- Order Recap Card -->
+              <div class="success-recap-box">
+                <div class="recap-header">
+                  <span>تفاصيل طلبك المسجل:</span>
+                  <span class="order-id-tag" id="successOrderId">#PR-84291</span>
+                </div>
+                <div class="recap-row">
+                  <span>المنتج:</span>
+                  <strong id="recapProduct">دهان PROPYLAX GEL (100GM)</strong>
+                </div>
+                <div class="recap-row">
+                  <span>الكمية:</span>
+                  <strong id="recapQty">عبوة واحدة (100GM)</strong>
+                </div>
+                <div class="recap-row">
+                  <span>الإجمالي عند الاستلام:</span>
+                  <strong class="recap-total-highlight" id="recapTotal">420 جنيه مصري</strong>
+                </div>
+                <div class="recap-row">
+                  <span>طريقة الدفع:</span>
+                  <strong>الدفع نقداً عند الاستلام (COD)</strong>
+                </div>
+              </div>
+
+              <div class="success-action-area">
+                <button type="button" class="btn-back-hero" id="btnBackToHero">
+                  <span>العودة لتفاصيل المنتج</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       STICKY BOTTOM PURCHASE BAR (MOBILE & DESKTOP CRO)
+       ========================================== -->
+  <aside class="sticky-purchase-bar" id="stickyPurchaseBar" aria-label="شريط الشراء السريع">
+    <div class="sticky-bar-wrapper">
+      <div class="sticky-product-info">
+        <img src="assets/images/propylax-product-1.webp" alt="PROPYLAX GEL" class="sticky-thumb-img">
+        <div class="sticky-text-block">
+          <div class="sticky-name">دهان PROPYLAX GEL • 100GM</div>
+          <div class="sticky-price-row">
+            <span class="sticky-price-now">420 ج.م</span>
+            <span class="sticky-price-old">560 ج.م</span>
+            <span class="sticky-discount-tag">وفر 140 ج.م</span>
+          </div>
+        </div>
+      </div>
+      <div class="sticky-cta-area">
+        <a href="#order-section" class="sticky-order-btn" id="stickyOrderBtn">
+          <span>اطلب الآن (الدفع عند الاستلام)</span>
+          <span class="sticky-btn-arrow">←</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       LIVE SOCIAL PROOF RECENT PURCHASE TOAST
+       ========================================== -->
+  <aside class="recent-purchase-toast" id="recentPurchaseToast" aria-live="polite" role="status">
+    <div class="toast-card-inner">
+      <div class="toast-avatar" id="toastAvatar">👨‍⚕️</div>
+      <div class="toast-content">
+        <div class="toast-header-line">
+          <strong id="toastBuyerName">أحمد م.</strong>
+          <span class="toast-loc" id="toastBuyerLoc">من القاهرة</span>
+        </div>
+        <div class="toast-desc">
+          <span>قام بطلب عبوة PROPYLAX GEL 100GM</span>
+        </div>
+        <div class="toast-time">
+          <span class="toast-pulse-dot"></span>
+          <span id="toastTimeAgo">منذ 3 دقائق</span>
+          <span class="toast-verified">✓ شراء مؤكد</span>
+        </div>
+      </div>
+      <button type="button" class="toast-close-btn" id="toastCloseBtn" aria-label="إغلاق التنبيه">×</button>
+    </div>
+  </aside>
+
+  <!-- Confetti Canvas for Order Celebration -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
