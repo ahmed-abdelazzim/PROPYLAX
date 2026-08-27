@@ -526,11 +526,13 @@
                   <input 
                     type="text" 
                     id="customerName" 
-                    name="customer_name" 
+                    name="name" 
                     class="form-input" 
                     placeholder="مثال: أحمد محمد محمود" 
                     required 
                     autocomplete="name"
+                    autocapitalize="words"
+                    spellcheck="false"
                     minlength="3"
                   >
                   <span class="input-valid-badge" id="nameValidBadge">✓</span>
@@ -554,14 +556,14 @@
                   <input 
                     type="tel" 
                     id="customerPhone" 
-                    name="customer_phone" 
+                    name="tel" 
                     class="form-input phone-input" 
                     placeholder="مثال: 01012345678 (11 رقم)" 
                     required 
                     dir="rtl"
-                    inputmode="numeric"
+                    inputmode="tel"
                     maxlength="14"
-                    autocomplete="tel"
+                    autocomplete="tel tel-national"
                   >
                   <span class="input-valid-badge" id="phoneValidBadge">✓</span>
                   <span class="carrier-pill" id="carrierPill" style="display:none;"></span>
