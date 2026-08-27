@@ -337,33 +337,38 @@ a {
   transform: scale(1.015);
 }
 
-.banner-ambient-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent 65%, rgba(0, 27, 21, 0.4) 100%);
+.banner-click-hint-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .banner-click-hint {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 27, 21, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--on-primary);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  background: var(--surface-container-lowest);
+  color: var(--primary);
+  border: 1px solid var(--surface-container-high);
   padding: 6px 16px;
   border-radius: var(--rounded-full);
-  font-size: clamp(0.74rem, 2.4vw, 0.84rem);
-  font-weight: 600;
-  display: flex;
+  font-size: clamp(0.76rem, 2.4vw, 0.84rem);
+  font-weight: 700;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 8px;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  pointer-events: none;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+.banner-link-action:hover .banner-click-hint {
+  background: var(--primary-fixed);
+  border-color: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
 }
 
 .hint-pulse-dot {
@@ -380,7 +385,7 @@ a {
   transition: transform var(--transition-fast);
 }
 
-.banner-frame-glass:hover .hint-arrow {
+.banner-link-action:hover .hint-arrow {
   transform: translateX(-4px);
 }
 
