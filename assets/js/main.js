@@ -474,34 +474,7 @@
     }
   }
 
-  /* ==========================================================================
-     8. MEDICAL FAQ ACCORDION
-     ========================================================================== */
-  function initFaqAccordion() {
-    const faqItems = document.querySelectorAll('.faq-item');
 
-    faqItems.forEach((item) => {
-      const questionBtn = item.querySelector('.faq-question');
-      if (!questionBtn) return;
-
-      questionBtn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-
-        // Close others
-        faqItems.forEach((other) => {
-          other.classList.remove('active');
-          const otherBtn = other.querySelector('.faq-question');
-          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-        });
-
-        // Toggle current
-        if (!isOpen) {
-          item.classList.add('active');
-          questionBtn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  }
 
   /* ==========================================================================
      9. STICKY FLOATING BOTTOM PURCHASE BAR
@@ -710,7 +683,6 @@
     initOrderSummary();
     initPhoneValidation();
     initOrderForm();
-    initFaqAccordion();
     initStickyPurchaseBar();
     initRecentPurchaseToasts();
     initSmoothScrollLinks();
