@@ -2302,6 +2302,14 @@ a {
   white-space: nowrap;
 }
 
+.btn-text-full {
+  display: inline;
+}
+
+.btn-text-mobile {
+  display: none;
+}
+
 .sticky-order-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(238, 108, 29, 0.45);
@@ -2819,18 +2827,42 @@ a {
     font-size: 1.05rem;
   }
 
+  .btn-text-full {
+    display: none;
+  }
+
+  .btn-text-mobile {
+    display: inline;
+  }
+
   .sticky-purchase-bar {
     padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px));
-    padding-right: 54px;
+    padding-right: 56px;
   }
 
   .sticky-bar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 8px;
+    width: 100%;
   }
 
   .sticky-product-info {
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    flex: 1;
     min-width: 0;
+  }
+
+  .sticky-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    width: 100%;
   }
 
   .sticky-thumb-img {
@@ -2840,17 +2872,25 @@ a {
   .sticky-name {
     font-size: 0.76rem;
     font-weight: 700;
-    line-height: 1.2;
+    color: var(--primary);
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    max-width: 100%;
   }
 
   .sticky-price-row {
-    gap: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     white-space: nowrap;
   }
 
   .sticky-price-now {
     font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--color-cta);
   }
 
   .sticky-price-old {
@@ -2865,13 +2905,19 @@ a {
     padding: 1px 5px;
   }
 
+  .sticky-cta-area {
+    flex-shrink: 0;
+  }
+
   .sticky-order-btn {
-    padding: 6px 12px;
-    font-size: 0.78rem;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
     min-height: 36px;
     gap: 4px;
     border-radius: var(--rounded-md);
     white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(238, 108, 29, 0.35);
   }
 
   .recent-purchase-toast {
