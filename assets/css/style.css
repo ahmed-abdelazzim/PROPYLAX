@@ -219,7 +219,7 @@ a {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 16px 20px 48px;
+  padding: 6px 20px 48px;
 }
 
 .section {
@@ -236,15 +236,16 @@ a {
    SECTION 1: HERO SECTION & PRODUCT OFFER
    ========================================================================== */
 .hero-section {
-  padding-top: 10px;
-  padding-bottom: 32px;
+  padding-top: 0;
+  padding-bottom: 28px;
 }
 
 /* Top Best Seller Badge */
 .top-badge-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-top: 0;
+  margin-bottom: 12px;
   width: 100%;
 }
 
@@ -2553,11 +2554,11 @@ a {
 /* Tablet & Desktop (>= 860px) */
 @media (min-width: 860px) {
   .landing-container {
-    padding: 28px 24px 64px;
+    padding: 16px 24px 64px;
   }
 
   .hero-section {
-    padding-top: 16px;
+    padding-top: 0;
     padding-bottom: 48px;
   }
 
@@ -2704,11 +2705,15 @@ a {
 
 @media (max-width: 600px) {
   .landing-container {
-    padding: 12px 14px 48px;
+    padding: 6px 12px 40px;
   }
 
   .section {
-    padding: 24px 0;
+    padding: 20px 0;
+  }
+
+  .top-badge-wrapper {
+    margin-bottom: 8px;
   }
 
   .faq-question {
