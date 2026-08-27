@@ -1,35 +1,23 @@
 /**
- * PROPYLAX GEL — HIGH-CONVERTING MEDICAL LANDING PAGE LOGIC
- * Features:
- * - Persistent 25-minute Countdown Timer (localStorage preserved)
- * - Natural Dynamic Live View Simulation (10 - 20)
- * - Product Visual Switcher (Combo / Box / Tube)
- * - Real-time Package Pricing & Savings Calculator
- * - Egyptian Phone Validation & Carrier Detection (010, 011, 012, 015)
- * - Frictionless Form Submission with Animated Success State
+ * Propylax Landing Page - Main Scripts
  */
 
 (function () {
   'use strict';
 
-  /* ==========================================================================
-     1. CONFIGURATION & STATE
-     ========================================================================== */
+  // Configuration
   const CONFIG = {
-    // Campaign Countdown
-    countdownDurationMinutes: 25,
-    storageCountdownKey: 'propylax_deal_end_timestamp_aug2026',
+    countdownMinutes: 25,
+    countdownStorageKey: 'propylax_deal_end_timestamp_aug2026',
 
-    // Live Viewer Simulation
     liveView: {
       min: 11,
       max: 20,
       initial: 17,
-      intervalMinMs: 4000,
-      intervalMaxMs: 7500
+      minInterval: 4000,
+      maxInterval: 7500
     },
 
-    // Product Offer Configuration (Single 100GM Tube)
     product: {
       name: 'دهان PROPYLAX GEL (عبوة 100GM)',
       qtyLabel: 'عبوة واحدة (100GM)',
@@ -40,33 +28,29 @@
     }
   };
 
-  let state = {
-    currentLiveCount: CONFIG.liveView.initial
+  const state = {
+    liveCount: CONFIG.liveView.initial
   };
 
-  /* ==========================================================================
-     2. COUNTDOWN TIMER (PERSISTENT & REALISTIC)
-     ========================================================================== */
+  // Countdown timer
   function initCountdownTimer() {
     const minutesEl = document.getElementById('timerMinutes');
     const secondsEl = document.getElementById('timerSeconds');
     if (!minutesEl || !secondsEl) return;
 
     let targetEndTime;
-    const storedTimestamp = localStorage.getItem(CONFIG.storageCountdownKey);
+    const stored = localStorage.getItem(CONFIG.countdownStorageKey);
     const now = Date.now();
 
-    if (storedTimestamp && parseInt(storedTimestamp, 10) > now) {
-      targetEndTime = parseInt(storedTimestamp, 10);
+    if (stored && parseInt(stored, 10) > now) {
+      targetEndTime = parseInt(stored, 10);
     } else {
-      // Set new duration (25 minutes from now)
-      targetEndTime = now + CONFIG.countdownDurationMinutes * 60 * 1000;
-      localStorage.setItem(CONFIG.storageCountdownKey, targetEndTime.toString());
+      targetEndTime = now + CONFIG.countdownMinutes * 60 * 1000;
+      localStorage.setItem(CONFIG.countdownStorageKey, targetEndTime.toString());
     }
 
-    function updateTimer() {
-      const currentTime = Date.now();
-      const remainingMs = targetEndTime - currentTime;
+    function update() {
+      const remainingMs = targetEndTime - Date.now();
 
       if (remainingMs <= 0) {
         minutesEl.textContent = '00';
@@ -82,202 +66,169 @@
       secondsEl.textContent = String(seconds).padStart(2, '0');
     }
 
-    updateTimer();
-    setInterval(updateTimer, 1000);
+    update();
+    setInterval(update, 1000);
   }
 
-  /* ==========================================================================
-     3. LIVE VIEW SIMULATION (10 - 20 NATURAL FLUCTUATION)
-     ========================================================================== */
+  // Live viewers counter
   function initLiveView() {
-    const liveCountEl = document.getElementById('liveCount');
-    if (!liveCountEl) return;
+    const el = document.getElementById('liveCount');
+    if (!el) return;
 
-    let currentVal = state.currentLiveCount;
-    liveCountEl.textContent = currentVal;
+    let current = state.liveCount;
+    el.textContent = current;
 
-    function fluctuate() {
-      // Natural delta between -2 and +2
+    function tick() {
       const delta = (Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 2) + 1);
-      let nextVal = currentVal + delta;
+      let next = current + delta;
 
-      // Keep strictly within [CONFIG.liveView.min, CONFIG.liveView.max]
-      if (nextVal < CONFIG.liveView.min) nextVal = CONFIG.liveView.min + 2;
-      if (nextVal > CONFIG.liveView.max) nextVal = CONFIG.liveView.max - 2;
+      if (next < CONFIG.liveView.min) next = CONFIG.liveView.min + 2;
+      if (next > CONFIG.liveView.max) next = CONFIG.liveView.max - 2;
 
-      currentVal = nextVal;
-      state.currentLiveCount = currentVal;
+      current = next;
+      state.liveCount = current;
 
-      // Smooth micro-animation
-      liveCountEl.classList.add('num-updated');
-      liveCountEl.textContent = currentVal;
+      el.classList.add('num-updated');
+      el.textContent = current;
 
       setTimeout(() => {
-        liveCountEl.classList.remove('num-updated');
+        el.classList.remove('num-updated');
       }, 350);
 
-      // Schedule next fluctuation at random natural interval
-      const nextInterval = Math.floor(
-        Math.random() * (CONFIG.liveView.intervalMaxMs - CONFIG.liveView.intervalMinMs) + CONFIG.liveView.intervalMinMs
+      const delay = Math.floor(
+        Math.random() * (CONFIG.liveView.maxInterval - CONFIG.liveView.minInterval) + CONFIG.liveView.minInterval
       );
-      setTimeout(fluctuate, nextInterval);
+      setTimeout(tick, delay);
     }
 
-    setTimeout(fluctuate, 4000);
+    setTimeout(tick, 4000);
   }
 
-  /* ==========================================================================
-     4. INTERACTIVE PRODUCT IMAGE SLIDER (ARROWS, DOTS, THUMBS, TOUCH SWIPE)
-     ========================================================================== */
+  // Product gallery slider
   function initProductSlider() {
-    const sliderWrapper = document.getElementById('productSliderWrapper');
+    const wrapper = document.getElementById('productSliderWrapper');
     const track = document.getElementById('productSliderTrack');
     const slides = document.querySelectorAll('.slider-slide');
     const prevBtn = document.getElementById('sliderPrevBtn');
     const nextBtn = document.getElementById('sliderNextBtn');
     const dots = document.querySelectorAll('.slider-dot');
     const thumbs = document.querySelectorAll('.slider-thumb-item');
-    const counterNum = document.getElementById('currentSlideNum');
+    const counter = document.getElementById('currentSlideNum');
 
-    if (!sliderWrapper || slides.length === 0) return;
+    if (!wrapper || slides.length === 0) return;
 
-    let currentIndex = 0;
-    const totalSlides = slides.length;
+    let activeIndex = 0;
+    const total = slides.length;
 
-    function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
 
-      currentIndex = index;
+      activeIndex = index;
 
-      // Update slides
       slides.forEach((slide, i) => {
-        if (i === currentIndex) {
-          slide.classList.add('active');
-        } else {
-          slide.classList.remove('active');
-        }
+        slide.classList.toggle('active', i === activeIndex);
       });
 
-      // Update dots
       dots.forEach((dot, i) => {
-        if (i === currentIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
+        dot.classList.toggle('active', i === activeIndex);
       });
 
-      // Update thumbnails
       thumbs.forEach((thumb, i) => {
-        if (i === currentIndex) {
-          thumb.classList.add('active');
-        } else {
-          thumb.classList.remove('active');
-        }
+        thumb.classList.toggle('active', i === activeIndex);
       });
 
-      // Update counter badge
-      if (counterNum) counterNum.textContent = currentIndex + 1;
+      if (counter) counter.textContent = activeIndex + 1;
     }
 
-    // Previous Button (Right arrow in RTL)
     if (prevBtn) {
-      const handlePrev = (e) => {
+      const onPrev = (e) => {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
         }
-        goToSlide(currentIndex - 1);
+        goTo(activeIndex - 1);
       };
-      prevBtn.addEventListener('click', handlePrev);
-      prevBtn.addEventListener('touchend', handlePrev);
+      prevBtn.addEventListener('click', onPrev);
+      prevBtn.addEventListener('touchend', onPrev);
     }
 
-    // Next Button (Left arrow in RTL)
     if (nextBtn) {
-      const handleNext = (e) => {
+      const onNext = (e) => {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
         }
-        goToSlide(currentIndex + 1);
+        goTo(activeIndex + 1);
       };
-      nextBtn.addEventListener('click', handleNext);
-      nextBtn.addEventListener('touchend', handleNext);
+      nextBtn.addEventListener('click', onNext);
+      nextBtn.addEventListener('touchend', onNext);
     }
 
-    // Pagination Dots
     dots.forEach((dot) => {
-      const handleDot = (e) => {
+      const onDot = (e) => {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
         }
         const idx = parseInt(dot.dataset.index, 10);
-        if (!isNaN(idx)) goToSlide(idx);
+        if (!isNaN(idx)) goTo(idx);
       };
-      dot.addEventListener('click', handleDot);
-      dot.addEventListener('touchend', handleDot);
+      dot.addEventListener('click', onDot);
+      dot.addEventListener('touchend', onDot);
     });
 
-    // Thumbnails
     thumbs.forEach((thumb) => {
-      const handleThumb = (e) => {
+      const onThumb = (e) => {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
         }
         const idx = parseInt(thumb.dataset.index, 10);
-        if (!isNaN(idx)) goToSlide(idx);
+        if (!isNaN(idx)) goTo(idx);
       };
-      thumb.addEventListener('click', handleThumb);
-      thumb.addEventListener('touchend', handleThumb);
+      thumb.addEventListener('click', onThumb);
+      thumb.addEventListener('touchend', onThumb);
     });
 
-    // Touch swipe gesture on track
-    let touchStartX = 0;
-    let touchEndX = 0;
+    // Touch swipe support
+    let startX = 0;
+    let endX = 0;
 
     if (track) {
       track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+        startX = e.changedTouches[0].screenX;
       }, { passive: true });
 
       track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchEndX - touchStartX;
-        const threshold = 35;
-
-        if (Math.abs(diff) > threshold) {
+        endX = e.changedTouches[0].screenX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > 35) {
           if (diff > 0) {
-            goToSlide(currentIndex - 1);
+            goTo(activeIndex - 1);
           } else {
-            goToSlide(currentIndex + 1);
+            goTo(activeIndex + 1);
           }
         }
       }, { passive: true });
     }
   }
-  /* ==========================================================================
-     5. ORDER SUMMARY INITIALIZATION
-     ========================================================================== */
+
+  // Populate dynamic prices in form summary
   function initOrderSummary() {
-    const summaryProductText = document.getElementById('summaryProductText');
-    const summaryOldPrice = document.getElementById('summaryOldPrice');
-    const summarySavings = document.getElementById('summarySavings');
-    const summaryFinalPrice = document.getElementById('summaryFinalPrice');
+    const titleEl = document.getElementById('summaryProductText');
+    const oldPriceEl = document.getElementById('summaryOldPrice');
+    const savingsEl = document.getElementById('summarySavings');
+    const finalPriceEl = document.getElementById('summaryFinalPrice');
 
     const p = CONFIG.product;
-    if (summaryProductText) summaryProductText.textContent = p.name;
-    if (summaryOldPrice) summaryOldPrice.textContent = `${p.oldPrice} جنيه`;
-    if (summarySavings) summarySavings.textContent = `${p.savings} جنيه (خصم ${p.discountPercent})`;
-    if (summaryFinalPrice) summaryFinalPrice.textContent = p.currentPrice;
+    if (titleEl) titleEl.textContent = p.name;
+    if (oldPriceEl) oldPriceEl.textContent = `${p.oldPrice} جنيه`;
+    if (savingsEl) savingsEl.textContent = `${p.savings} جنيه (خصم ${p.discountPercent})`;
+    if (finalPriceEl) finalPriceEl.textContent = p.currentPrice;
   }
 
-  /* ==========================================================================
-     6. EGYPTIAN PHONE VALIDATION & LIVE CARRIER / CHECKMARK FEEDBACK
-     ========================================================================== */
+  // Live input validation & carrier detector
   function initPhoneValidation() {
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
@@ -287,7 +238,6 @@
     const nameError = document.getElementById('nameError');
     const phoneError = document.getElementById('phoneError');
 
-    // Live validation for Name
     if (nameInput) {
       nameInput.addEventListener('input', () => {
         const val = nameInput.value.trim();
@@ -301,7 +251,6 @@
       });
     }
 
-    // Live validation for Phone
     if (phoneInput) {
       phoneInput.addEventListener('input', (e) => {
         let val = e.target.value.replace(/[^\d]/g, '');
@@ -311,7 +260,7 @@
         }
         phoneInput.value = val;
 
-        // Detect Egyptian carriers: 010 (Vodafone), 011 (Etisalat), 012 (Orange), 015 (WE)
+        // Carrier badge
         if (carrierPill) {
           if (val.startsWith('010')) {
             carrierPill.textContent = 'Vodafone';
@@ -334,8 +283,8 @@
           }
         }
 
-        const isValidPhone = val.length === 11 && /^01[0125][0-9]{8}$/.test(val);
-        if (isValidPhone) {
+        const isValid = val.length === 11 && /^01[0125][0-9]{8}$/.test(val);
+        if (isValid) {
           phoneInput.classList.remove('has-error');
           if (phoneError) phoneError.classList.remove('show');
           if (phoneBadge) phoneBadge.classList.add('show');
@@ -346,9 +295,7 @@
     }
   }
 
-  /* ==========================================================================
-     7. FORM SUBMISSION & SUCCESS CELEBRATION
-     ========================================================================== */
+  // Form submission handling
   function initOrderForm() {
     const form = document.getElementById('directOrderForm');
     const nameInput = document.getElementById('customerName');
@@ -374,10 +321,10 @@
 
     if (!form) return;
 
-    function triggerShake(element) {
+    function shake(element) {
       if (!element) return;
       element.classList.remove('shake');
-      void element.offsetWidth; // Force reflow
+      void element.offsetWidth;
       element.classList.add('shake');
       setTimeout(() => element.classList.remove('shake'), 400);
     }
@@ -385,34 +332,32 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      let isValid = true;
+      let valid = true;
       const nameVal = nameInput ? nameInput.value.trim() : '';
       const phoneVal = phoneInput ? phoneInput.value.trim() : '';
 
-      // Validate Name
       if (nameVal.length < 3) {
         if (nameInput) nameInput.classList.add('has-error');
         if (nameError) nameError.classList.add('show');
-        triggerShake(groupName);
-        isValid = false;
+        shake(groupName);
+        valid = false;
       } else {
         if (nameInput) nameInput.classList.remove('has-error');
         if (nameError) nameError.classList.remove('show');
       }
 
-      // Validate Phone
       const phoneRegex = /^01[0125][0-9]{8}$/;
       if (!phoneRegex.test(phoneVal)) {
         if (phoneInput) phoneInput.classList.add('has-error');
         if (phoneError) phoneError.classList.add('show');
-        triggerShake(groupPhone);
-        isValid = false;
+        shake(groupPhone);
+        valid = false;
       } else {
         if (phoneInput) phoneInput.classList.remove('has-error');
         if (phoneError) phoneError.classList.remove('show');
       }
 
-      if (!isValid) {
+      if (!valid) {
         if (nameVal.length < 3 && nameInput) {
           nameInput.focus();
         } else if (phoneInput) {
@@ -421,33 +366,29 @@
         return;
       }
 
-      // Show Loading State
       submitBtn.disabled = true;
       btnSpinner.style.display = 'inline-block';
       btnText.textContent = 'جاري تسجيل طلبك...';
 
       setTimeout(() => {
-        const randomOrderId = '#PR-' + Math.floor(10000 + Math.random() * 90000);
+        const orderId = '#PR-' + Math.floor(10000 + Math.random() * 90000);
         const prod = CONFIG.product;
 
         if (successCustomerName) successCustomerName.textContent = nameVal;
         if (successCustomerPhone) successCustomerPhone.textContent = phoneVal;
-        if (successOrderId) successOrderId.textContent = randomOrderId;
+        if (successOrderId) successOrderId.textContent = orderId;
         if (recapProduct) recapProduct.textContent = prod.name;
         if (recapQty) recapQty.textContent = prod.qtyLabel;
         if (recapTotal) recapTotal.textContent = `${prod.currentPrice} جنيه مصري`;
 
-        // Switch Views
         formView.style.display = 'none';
         successView.style.display = 'block';
 
-        // Trigger Confetti Celebration
-        fireConfettiBurst();
+        fireConfetti();
 
-        // Scroll to card top smoothly
-        const orderCardGlass = document.getElementById('orderCardGlass');
-        if (orderCardGlass) {
-          orderCardGlass.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const card = document.getElementById('orderCardGlass');
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 700);
     });
@@ -466,101 +407,86 @@
         if (nameBadge) nameBadge.classList.remove('show');
         if (phoneBadge) phoneBadge.classList.remove('show');
         
-        const heroSection = document.getElementById('hero-section');
-        if (heroSection) {
-          heroSection.scrollIntoView({ behavior: 'smooth' });
+        const hero = document.getElementById('hero-section');
+        if (hero) {
+          hero.scrollIntoView({ behavior: 'smooth' });
         }
       });
     }
   }
 
-
-
-  /* ==========================================================================
-     8. MOBILE REVIEWS CAROUSEL (AUTO-SLIDE & SWIPE ONLY ON MOBILE)
-     ========================================================================== */
+  // Mobile customer reviews carousel
   function initReviewsMobileCarousel() {
-    const reviewsGrid = document.getElementById('reviewsGrid');
+    const grid = document.getElementById('reviewsGrid');
     const cards = document.querySelectorAll('.review-card');
     const dots = document.querySelectorAll('.review-dot');
 
-    if (!reviewsGrid || cards.length === 0) return;
+    if (!grid || cards.length === 0) return;
 
-    let currentReview = 0;
-    let autoPlayTimer = null;
-    const totalReviews = cards.length;
+    let activeReview = 0;
+    let timer = null;
+    const total = cards.length;
 
-    function showReview(index) {
-      if (index < 0) index = totalReviews - 1;
-      if (index >= totalReviews) index = 0;
+    function show(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
 
-      currentReview = index;
+      activeReview = index;
 
       cards.forEach((card, i) => {
-        if (i === currentReview) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
+        card.classList.toggle('active', i === activeReview);
       });
 
       dots.forEach((dot, i) => {
-        if (i === currentReview) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
+        dot.classList.toggle('active', i === activeReview);
       });
     }
 
-    // Dot click listeners
     dots.forEach((dot) => {
       dot.addEventListener('click', (e) => {
         e.preventDefault();
         const idx = parseInt(dot.dataset.index, 10);
         if (!isNaN(idx)) {
-          showReview(idx);
+          show(idx);
           resetAutoPlay();
         }
       });
     });
 
-    // Touch swipe support on reviews grid
-    let touchStartX = 0;
-    let touchEndX = 0;
+    let startX = 0;
+    let endX = 0;
 
-    reviewsGrid.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+    grid.addEventListener('touchstart', (e) => {
+      startX = e.changedTouches[0].screenX;
       stopAutoPlay();
     }, { passive: true });
 
-    reviewsGrid.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchEndX - touchStartX;
+    grid.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].screenX;
+      const diff = endX - startX;
       if (Math.abs(diff) > 35) {
         if (diff > 0) {
-          showReview(currentReview - 1);
+          show(activeReview - 1);
         } else {
-          showReview(currentReview + 1);
+          show(activeReview + 1);
         }
       }
       startAutoPlay();
     }, { passive: true });
 
-    // Auto Play every 4.5s on mobile screens
     function startAutoPlay() {
       if (window.innerWidth <= 768) {
         stopAutoPlay();
-        autoPlayTimer = setInterval(() => {
-          showReview(currentReview + 1);
+        timer = setInterval(() => {
+          show(activeReview + 1);
         }, 4500);
       }
     }
 
     function stopAutoPlay() {
-      if (autoPlayTimer) {
-        clearInterval(autoPlayTimer);
-        autoPlayTimer = null;
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
       }
     }
 
@@ -573,42 +499,37 @@
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         stopAutoPlay();
-      } else if (!autoPlayTimer) {
+      } else if (!timer) {
         startAutoPlay();
       }
     }, { passive: true });
   }
 
-  /* ==========================================================================
-     9. STICKY FLOATING BOTTOM PURCHASE BAR
-     ========================================================================== */
+  // Sticky bottom purchase bar
   function initStickyPurchaseBar() {
-    const stickyBar = document.getElementById('stickyPurchaseBar');
+    const bar = document.getElementById('stickyPurchaseBar');
     const heroCta = document.getElementById('heroCtaBtn');
     const orderSection = document.getElementById('order-section');
 
-    if (!stickyBar) return;
+    if (!bar) return;
 
-    function checkStickyVisibility() {
+    function check() {
       const scrollY = window.scrollY || window.pageYOffset;
-      const heroThreshold = heroCta ? (heroCta.offsetTop + 100) : 400;
+      const threshold = heroCta ? (heroCta.offsetTop + 100) : 400;
       const orderTop = orderSection ? (orderSection.offsetTop - 300) : 2000;
 
-      // Show after hero CTA and hide when order section is in view
-      if (scrollY > heroThreshold && scrollY < orderTop) {
-        stickyBar.classList.add('visible');
+      if (scrollY > threshold && scrollY < orderTop) {
+        bar.classList.add('visible');
       } else {
-        stickyBar.classList.remove('visible');
+        bar.classList.remove('visible');
       }
     }
 
-    window.addEventListener('scroll', checkStickyVisibility, { passive: true });
-    checkStickyVisibility();
+    window.addEventListener('scroll', check, { passive: true });
+    check();
   }
 
-  /* ==========================================================================
-     10. LIVE RECENT PURCHASE TOAST NOTIFICATIONS
-     ========================================================================== */
+  // Toast notifications for recent purchases
   function initRecentPurchaseToasts() {
     const toast = document.getElementById('recentPurchaseToast');
     const avatar = document.getElementById('toastAvatar');
@@ -619,7 +540,7 @@
 
     if (!toast) return;
 
-    const purchases = [
+    const data = [
       { name: 'أحمد م.', loc: 'من القاهرة', time: 'منذ دقيقتين', avatar: '👨‍⚕️' },
       { name: 'د. وائل ر.', loc: 'من الإسكندرية', time: 'منذ 4 دقائق', avatar: '🩺' },
       { name: 'م. طارق خ.', loc: 'من الجيزة', time: 'منذ دقيقة', avatar: '👨‍💼' },
@@ -628,12 +549,12 @@
       { name: 'د. سهام ن.', loc: 'من الزقازيق', time: 'منذ 7 دقائق', avatar: '🧕' }
     ];
 
-    let currentIdx = 0;
-    let toastTimeout = null;
+    let index = 0;
+    let timer = null;
 
-    function showNextToast() {
-      const item = purchases[currentIdx];
-      currentIdx = (currentIdx + 1) % purchases.length;
+    function displayNext() {
+      const item = data[index];
+      index = (index + 1) % data.length;
 
       if (avatar) avatar.textContent = item.avatar;
       if (nameEl) nameEl.textContent = item.name;
@@ -642,8 +563,7 @@
 
       toast.classList.add('show');
 
-      // Hide after 5 seconds
-      toastTimeout = setTimeout(() => {
+      timer = setTimeout(() => {
         toast.classList.remove('show');
       }, 5000);
     }
@@ -651,21 +571,18 @@
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
         toast.classList.remove('show');
-        if (toastTimeout) clearTimeout(toastTimeout);
+        if (timer) clearTimeout(timer);
       });
     }
 
-    // Start cycle after 6s, then every 20s
     setTimeout(() => {
-      showNextToast();
-      setInterval(showNextToast, 20000);
+      displayNext();
+      setInterval(displayNext, 20000);
     }, 6000);
   }
 
-  /* ==========================================================================
-     11. PURE CANVAS CONFETTI CELEBRATION BURST
-     ========================================================================== */
-  function fireConfettiBurst() {
+  // Canvas confetti animation
+  function fireConfetti() {
     const canvas = document.getElementById('confettiCanvas');
     if (!canvas) return;
 
@@ -692,11 +609,11 @@
       });
     }
 
-    let animationFrame;
-    function render() {
+    let animId;
+    function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      let remaining = false;
+      let running = false;
       particles.forEach((p, i) => {
         p.tiltAngle += p.tiltAngleIncremental;
         p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
@@ -705,7 +622,7 @@
         p.alpha -= 0.009;
 
         if (p.alpha > 0) {
-          remaining = true;
+          running = true;
           ctx.beginPath();
           ctx.lineWidth = p.r;
           ctx.strokeStyle = p.color;
@@ -716,30 +633,28 @@
         }
       });
 
-      if (remaining) {
-        animationFrame = requestAnimationFrame(render);
+      if (running) {
+        animId = requestAnimationFrame(draw);
       } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        cancelAnimationFrame(animationFrame);
+        cancelAnimationFrame(animId);
       }
     }
 
-    render();
+    draw();
   }
 
-  /* ==========================================================================
-     12. BANNER & CTA SMOOTH SCROLL HANDLER
-     ========================================================================== */
+  // Smooth scroll
   function initSmoothScrollLinks() {
-    const scrollLinks = document.querySelectorAll('a[href="#order-section"]');
-    const orderSection = document.getElementById('order-section');
+    const links = document.querySelectorAll('a[href="#order-section"]');
+    const target = document.getElementById('order-section');
     const nameInput = document.getElementById('customerName');
 
-    scrollLinks.forEach((link) => {
+    links.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        if (orderSection) {
-          orderSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           setTimeout(() => {
             if (nameInput) nameInput.focus();
           }, 600);
@@ -748,15 +663,13 @@
     });
   }
 
-  /* ==========================================================================
-     13. AMBIENT BACKGROUND PARTICLES (LIGHTWEIGHT)
-     ========================================================================== */
+  // Background floating particles
   function initAmbientParticles() {
     const container = document.getElementById('particlesContainer');
     if (!container) return;
 
-    const particleCount = 14;
-    for (let i = 0; i < particleCount; i++) {
+    const count = 14;
+    for (let i = 0; i < count; i++) {
       const p = document.createElement('div');
       p.className = 'ambient-particle';
       const size = Math.random() * 6 + 3;
@@ -776,9 +689,7 @@
     }
   }
 
-  /* ==========================================================================
-     14. INITIALIZE EVERYTHING ON DOM CONTENT LOADED
-     ========================================================================== */
+  // Init
   document.addEventListener('DOMContentLoaded', () => {
     initCountdownTimer();
     initLiveView();

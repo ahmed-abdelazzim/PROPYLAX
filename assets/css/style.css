@@ -1,14 +1,10 @@
-/* ==========================================================================
-   PROPYLAX MEDICAL ELITE — HIGH-CONVERTING MEDICAL LANDING PAGE
-   Design System: Propylax Medical Elite (Corporate / Modern Clinical Style)
-   Palette: Deep Medical Green, Fresh Green, Vibrant Orange, Clinical White
-   Typography: IBM Plex Sans Arabic (Pure RTL Optimization)
-   ========================================================================== */
+/* ===================================================
+   Propylax Landing Page Styles
+   =================================================== */
 
-/* 1. DESIGN TOKENS & SYSTEM VARIABLES
-   -------------------------------------------------------------------------- */
+/* Design Tokens */
 :root {
-  /* Surface & Neutral Hierarchy */
+  /* Surfaces & Neutrals */
   --surface: #f8fafa;
   --surface-dim: #d8dada;
   --surface-bright: #f8fafa;
@@ -25,7 +21,7 @@
   --outline-variant: #c1c8c4;
   --surface-tint: #43655b;
 
-  /* Primary (Deep Medical Green - Authority, Headlines, Structural Boundaries) */
+  /* Primary Brand Colors */
   --primary: #001b15;
   --on-primary: #ffffff;
   --primary-container: #0d3129;
@@ -36,7 +32,7 @@
   --on-primary-fixed: #00201a;
   --on-primary-fixed-variant: #2b4d44;
 
-  /* Secondary (Fresh Green - Relief, Freshness, Trust Indicators, Success States) */
+  /* Secondary Colors */
   --secondary: #006d37;
   --on-secondary: #ffffff;
   --secondary-container: #6bfe9c;
@@ -46,7 +42,7 @@
   --on-secondary-fixed: #00210c;
   --on-secondary-fixed-variant: #005228;
 
-  /* Tertiary / CTA (Vibrant Orange - Conversion Urgency, Discounts, Price Highlights) */
+  /* Tertiary / CTA Colors */
   --tertiary: #2d0d00;
   --on-tertiary: #ffffff;
   --tertiary-container: #4e1c00;
@@ -59,7 +55,7 @@
   --on-tertiary-fixed: #341000;
   --on-tertiary-fixed-variant: #7a3000;
 
-  /* Feedback & Utility Colors */
+  /* Utility Colors */
   --error: #ba1a1a;
   --on-error: #ffffff;
   --error-container: #ffdad6;
@@ -69,18 +65,18 @@
   --surface-variant: #e1e3e3;
   --medical-white: #ffffff;
   --text-muted: #64748b;
-  --price-strike: #dc2626; /* Vibrant Red for crossed-out price */
+  --price-strike: #dc2626;
 
-  /* Typography System */
+  /* Typography */
   --font-arabic: 'IBM Plex Sans Arabic', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Shape Language (Rounded System) */
-  --rounded-sm: 0.25rem;       /* 4px */
-  --rounded-default: 0.5rem;   /* 8px */
-  --rounded-md: 0.75rem;       /* 12px */
-  --rounded-lg: 1rem;          /* 16px - Buttons */
-  --rounded-xl: 1.5rem;        /* 24px - Cards & Containers */
-  --rounded-full: 9999px;      /* Pills & Badges */
+  /* Border Radii */
+  --rounded-sm: 0.25rem;
+  --rounded-default: 0.5rem;
+  --rounded-md: 0.75rem;
+  --rounded-lg: 1rem;
+  --rounded-xl: 1.5rem;
+  --rounded-full: 9999px;
 
   /* Spacing Grid */
   --container-max: 1200px;
@@ -91,7 +87,7 @@
   --stack-md: 16px;
   --stack-lg: 24px;
 
-  /* Ambient Shadows (Soft, Medical-Clean, Low-Opacity) */
+  /* Shadows */
   --shadow-subtle: 0 4px 16px rgba(0, 27, 21, 0.04);
   --shadow-card: 0 10px 30px rgba(0, 27, 21, 0.06);
   --shadow-elevated: 0 20px 45px rgba(0, 27, 21, 0.08);
@@ -104,8 +100,7 @@
   --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* 2. BASE RESET & GLOBAL DEFAULTS
-   -------------------------------------------------------------------------- */
+/* Reset & Base Styles */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -147,8 +142,7 @@ a {
   color: inherit;
 }
 
-/* 3. AMBIENT MEDICAL BACKGROUND SYSTEM
-   -------------------------------------------------------------------------- */
+/* Ambient Background Layer */
 .medical-bg-system {
   position: fixed;
   top: 0;
@@ -211,8 +205,7 @@ a {
   100% { transform: translate(-20px, 15px) scale(0.96); }
 }
 
-/* 4. MAIN CONTAINER & LAYOUT GRID
-   -------------------------------------------------------------------------- */
+/* Layout Container */
 .landing-container {
   position: relative;
   z-index: 1;
@@ -232,15 +225,12 @@ a {
   max-width: 100%;
 }
 
-/* ==========================================================================
-   SECTION 1: HERO SECTION & PRODUCT OFFER
-   ========================================================================== */
+/* Hero Section */
 .hero-section {
   padding-top: 0;
   padding-bottom: 28px;
 }
 
-/* Top Best Seller Badge */
 .top-badge-wrapper {
   display: flex;
   justify-content: center;
@@ -292,7 +282,7 @@ a {
   50% { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 27, 21, 0.08); }
 }
 
-/* Master Panoramic Hero Banner (Clickable) */
+/* Hero Panoramic Banner */
 .hero-panoramic-banner {
   position: relative;
   width: 100%;
@@ -389,9 +379,7 @@ a {
   transform: translateX(-4px);
 }
 
-/* ==========================================================================
-   HERO CONTENT GRID & TYPOGRAPHY
-   ========================================================================== */
+/* Hero Content Grid & Typography */
 .hero-grid {
   display: flex;
   flex-direction: column;
@@ -404,7 +392,6 @@ a {
   gap: 16px;
 }
 
-/* Product Sub Brand Tag */
 .product-sub-brand {
   display: flex;
   align-items: center;
@@ -430,9 +417,8 @@ a {
   letter-spacing: 0.05em;
 }
 
-/* Main Headline (IBM Plex Sans Arabic, 32px / Mobile: 26px, Weight 700) */
 .main-headline {
-  font-size: clamp(1.625rem, 5.2vw, 2rem); /* 26px mobile to 32px desktop */
+  font-size: clamp(1.625rem, 5.2vw, 2rem);
   font-weight: 700;
   line-height: 1.25;
   color: var(--primary);
@@ -448,7 +434,6 @@ a {
   border-radius: 4px;
 }
 
-/* Supporting Body Text (16px - 18px, Line Height 1.6) */
 .supporting-text {
   font-size: clamp(0.98rem, 2.8vw, 1.1rem);
   line-height: 1.65;
@@ -461,9 +446,7 @@ a {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   PRODUCT VISUAL SHOWCASE COMPONENT
-   ========================================================================== */
+/* Product Showcase & Gallery */
 .product-showcase-card {
   position: relative;
   background: var(--surface-container-lowest);
@@ -504,7 +487,6 @@ a {
   pointer-events: none;
 }
 
-/* Interactive Product Image Slider */
 .product-slider-wrapper {
   position: relative;
   width: 100%;
@@ -626,7 +608,6 @@ a {
   left: 8px;
 }
 
-/* Slider Pagination Dots */
 .slider-dots-container {
   display: flex;
   align-items: center;
@@ -652,7 +633,6 @@ a {
   background: var(--secondary);
 }
 
-/* Interactive Mini Thumbnails Row */
 .slider-thumbnails-row {
   display: flex;
   align-items: center;
@@ -692,7 +672,6 @@ a {
   transform: translateY(-2px);
 }
 
-/* Product Spec Chips */
 .product-quick-specs {
   display: flex;
   align-items: center;
@@ -712,7 +691,7 @@ a {
   font-weight: 600;
 }
 
-/* Mobility Experience Demo Card */
+/* Mobility Demo Card */
 .mobility-experience-card {
   margin-top: 20px;
   background: var(--surface-container-low);
@@ -791,9 +770,7 @@ a {
   color: var(--primary);
 }
 
-/* ==========================================================================
-   QUICK BENEFITS LIST COMPONENT
-   ========================================================================== */
+/* Quick Benefits */
 .quick-benefits-list {
   display: flex;
   flex-direction: column;
@@ -851,9 +828,7 @@ a {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   PRICE & OFFER CARD COMPONENT
-   ========================================================================== */
+/* Price & Offer Card */
 .price-offer-card {
   background: var(--surface-container-lowest);
   border: 1px solid var(--surface-container-high);
@@ -932,9 +907,8 @@ a {
   gap: 6px;
 }
 
-/* Price Display Typography (IBM Plex Sans Arabic, 40px, Weight 700) */
 .price-amount {
-  font-size: clamp(2rem, 6vw, 2.5rem); /* 40px bold */
+  font-size: clamp(2rem, 6vw, 2.5rem);
   font-weight: 700;
   color: var(--color-cta);
   line-height: 1;
@@ -986,9 +960,7 @@ a {
   font-weight: 700;
 }
 
-/* ==========================================================================
-   COUNTDOWN TIMER CARD COMPONENT
-   ========================================================================== */
+/* Countdown Timer */
 .countdown-card {
   background: var(--surface-container-lowest);
   border: 1px solid var(--surface-container-high);
@@ -1058,9 +1030,7 @@ a {
   color: var(--outline);
 }
 
-/* ==========================================================================
-   LIVE VIEW SOCIAL ACTIVITY BAR
-   ========================================================================== */
+/* Live Viewers */
 .live-view-bar {
   background: var(--surface-container-lowest);
   border: 1px solid var(--surface-container-high);
@@ -1122,9 +1092,7 @@ a {
   100% { transform: scale(1); }
 }
 
-/* ==========================================================================
-   PRIMARY CTA BUTTON COMPONENT (Height 56px, Rounded-lg 1rem, Orange)
-   ========================================================================== */
+/* Primary CTA */
 .hero-cta-container {
   margin-top: 4px;
   width: 100%;
@@ -1193,7 +1161,6 @@ a {
   margin-top: 8px;
 }
 
-/* Trust Micro Cues */
 .trust-micro-cues {
   display: flex;
   align-items: center;
@@ -1217,9 +1184,7 @@ a {
   font-weight: 700;
 }
 
-/* ==========================================================================
-   SECTION 2: ORDER FORM & CONFIRMATION (CARD CONTAINER)
-   ========================================================================== */
+/* Order Section & Form */
 .order-section {
   padding-top: var(--section-padding-mobile);
   padding-bottom: 32px;
@@ -1256,7 +1221,6 @@ a {
   margin-bottom: 10px;
 }
 
-/* Headline MD (IBM Plex Sans Arabic, 24px, Weight 600) */
 .order-title {
   font-size: clamp(1.35rem, 4vw, 1.5rem);
   font-weight: 700;
@@ -1271,9 +1235,7 @@ a {
   margin: 0 auto;
 }
 
-/* ==========================================================================
-   SINGLE OFFER HIGHLIGHT BANNER (INSIDE ORDER FORM)
-   ========================================================================== */
+/* Single Offer Box */
 .single-offer-banner {
   background: var(--surface-container-low);
   border: 1.5px solid rgba(0, 109, 55, 0.2);
@@ -1457,9 +1419,7 @@ a {
   color: var(--primary);
 }
 
-/* ==========================================================================
-   THE DIRECT INPUT FORM & FIELDS
-   ========================================================================== */
+/* Form Inputs */
 .direct-order-form {
   display: flex;
   flex-direction: column;
@@ -1545,7 +1505,6 @@ a {
   display: block;
 }
 
-/* Phone Field Carrier Pill */
 .phone-input-container {
   position: relative;
 }
@@ -1584,7 +1543,7 @@ a {
   border: 1px solid rgba(128, 0, 128, 0.3);
 }
 
-/* Final Order Summary Card in Form */
+/* Order Summary in Form */
 .final-order-summary {
   background: var(--surface-container-low);
   border: 1px solid var(--surface-container-high);
@@ -1663,7 +1622,7 @@ a {
   color: var(--primary);
 }
 
-/* Submit Final Button (Height 56px, Rounded-lg 1rem, Orange) */
+/* Submit Button */
 .btn-confirm-order {
   width: 100%;
   min-height: 56px;
@@ -1706,7 +1665,6 @@ a {
   to { transform: rotate(360deg); }
 }
 
-/* Security Footer inside Card */
 .form-security-footer {
   display: flex;
   flex-direction: column;
@@ -1724,9 +1682,7 @@ a {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   SUCCESS STATE VIEW
-   ========================================================================== */
+/* Success State */
 .order-success-view {
   animation: fadeInSuccess 0.5s ease-out;
 }
@@ -1900,9 +1856,7 @@ a {
   transition: all var(--transition-fast);
 }
 
-/* ==========================================================================
-   SECTION 1.5: VERIFIED CUSTOMER REVIEWS & TESTIMONIALS
-   ========================================================================== */
+/* Customer Reviews */
 .reviews-section {
   padding: 32px 0;
   border-top: 1px solid var(--surface-container-high);
@@ -2077,119 +2031,7 @@ a {
   display: none;
 }
 
-/* ==========================================================================
-   SECTION 1.6: MEDICAL FAQ ACCORDION
-   ========================================================================== */
-.faq-section {
-  padding: 32px 0;
-  border-top: 1px solid var(--surface-container-high);
-}
-
-.faq-badge {
-  display: inline-block;
-  background: var(--surface-container-low);
-  border: 1px solid var(--surface-container-high);
-  color: var(--secondary);
-  padding: 4px 14px;
-  border-radius: var(--rounded-full);
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.faq-accordion {
-  max-width: 720px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.faq-item {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--surface-container-high);
-  border-radius: var(--rounded-lg);
-  overflow: hidden;
-  transition: all var(--transition-fast);
-  box-shadow: var(--shadow-subtle);
-}
-
-.faq-item:hover {
-  border-color: var(--outline-variant);
-}
-
-.faq-item.active {
-  border-color: rgba(0, 109, 55, 0.35);
-  box-shadow: 0 4px 16px rgba(0, 27, 21, 0.06);
-}
-
-.faq-question {
-  width: 100%;
-  padding: 16px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: right;
-  font-family: inherit;
-  font-size: 0.96rem;
-  font-weight: 700;
-  color: var(--primary);
-  transition: all var(--transition-fast);
-}
-
-.faq-question:hover {
-  color: var(--secondary);
-}
-
-.faq-icon {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  border-radius: 50%;
-  background: var(--surface-container-low);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.15rem;
-  font-weight: 600;
-  transition: transform var(--transition-bounce), background var(--transition-fast);
-}
-
-.faq-item.active .faq-icon {
-  transform: rotate(45deg);
-  background: var(--secondary);
-  color: #ffffff;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.35s ease;
-  padding: 0 20px;
-  background: var(--surface-container-lowest);
-}
-
-.faq-item.active .faq-answer {
-  max-height: 250px;
-  padding: 0 20px 18px;
-}
-
-.faq-answer p {
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: var(--on-surface-variant);
-  border-top: 1px solid var(--surface-container-low);
-  padding-top: 12px;
-}
-
-/* ==========================================================================
-   STICKY BOTTOM PURCHASE BAR
-   ========================================================================== */
+/* Sticky Bottom Purchase Bar */
 .sticky-purchase-bar {
   position: fixed;
   bottom: 0;
@@ -2329,9 +2171,7 @@ a {
   transform: translateX(-4px);
 }
 
-/* ==========================================================================
-   LIVE RECENT PURCHASE TOAST NOTIFICATION
-   ========================================================================== */
+/* Recent Purchase Toast */
 .recent-purchase-toast {
   position: fixed;
   bottom: 80px;
@@ -2435,9 +2275,7 @@ a {
   color: var(--primary);
 }
 
-/* ==========================================================================
-   INPUT VALIDATION POSITIVE BADGE & MICRO-ANIMATIONS
-   ========================================================================== */
+/* Feedback & Validations */
 .input-valid-badge {
   position: absolute;
   left: 14px;
@@ -2464,7 +2302,6 @@ a {
   to { transform: scale(1); opacity: 1; }
 }
 
-/* Form Shake Error */
 .form-group.shake {
   animation: shakeX 0.4s ease-in-out;
 }
@@ -2475,7 +2312,6 @@ a {
   40%, 80% { transform: translateX(6px); }
 }
 
-/* Confetti Celebration Canvas */
 .confetti-canvas {
   position: fixed;
   top: 0;
@@ -2486,9 +2322,7 @@ a {
   z-index: 9999;
 }
 
-/* ==========================================================================
-   FLOATING WIGGLE DANCE PRODUCT WIDGET
-   ========================================================================== */
+/* Floating Action Button */
 .floating-product-widget {
   position: fixed;
   bottom: 24px;
@@ -2553,7 +2387,6 @@ a {
   display: block;
 }
 
-/* Wiggle / Dance Animation */
 @keyframes productWiggleDance {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
@@ -2578,11 +2411,9 @@ a {
   }
 }
 
-/* ==========================================================================
-   5. RESPONSIVE BREAKPOINTS (DESKTOP & TABLET ENHANCEMENTS)
-   ========================================================================== */
+/* Media Queries & Responsiveness */
 
-/* Tablet & Desktop (>= 860px) */
+/* Tablet & Desktop */
 @media (min-width: 860px) {
   .landing-container {
     padding: 16px 24px 64px;
@@ -2594,7 +2425,7 @@ a {
   }
 
   .main-headline {
-    font-size: 2rem; /* 32px headline-lg */
+    font-size: 2rem;
     line-height: 1.25;
   }
 
@@ -2609,7 +2440,6 @@ a {
     display: contents;
   }
 
-  /* Column 1 (RTL Start = Right side visually in Arabic) */
   .product-sub-brand,
   .main-headline,
   .supporting-text,
@@ -2622,17 +2452,12 @@ a {
     grid-column: 1;
   }
 
-  /* Column 2 (Showcase sticky) */
   .mobile-visual-inline {
     grid-column: 2;
     grid-row: 1 / span 9;
     position: sticky;
     top: 24px;
     padding: 30px 24px 24px;
-  }
-
-  .product-display {
-    min-height: 380px;
   }
 
   .product-hero-media {
@@ -2657,7 +2482,7 @@ a {
   }
 }
 
-/* Large Desktop (>= 1100px) */
+/* Large Desktop */
 @media (min-width: 1100px) {
   .main-headline {
     font-size: 2.1rem;
@@ -2667,18 +2492,12 @@ a {
     gap: 48px;
   }
 
-  .product-display {
-    min-height: 410px;
-  }
-
   .product-hero-media {
     max-height: 430px;
   }
 }
 
-/* ==========================================================================
-   MOBILE & SMALL DEVICES OPTIMIZATIONS (iPhone, Galaxy, Pixel)
-   ========================================================================== */
+/* Mobile & Small Screens */
 @media (max-width: 768px) {
   .reviews-grid {
     display: block;
@@ -2746,19 +2565,6 @@ a {
   .top-badge-wrapper {
     margin-bottom: 8px;
   }
-
-  .faq-question {
-    padding: 14px 16px;
-    font-size: 0.9rem;
-  }
-
-  .faq-answer {
-    padding: 0 16px;
-  }
-
-  .faq-item.active .faq-answer {
-    padding: 0 16px 14px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -2825,7 +2631,7 @@ a {
   }
 
   .form-input {
-    font-size: 16px; /* Prevents iOS Safari zoom on focus */
+    font-size: 16px;
     min-height: 48px;
   }
 
