@@ -2730,23 +2730,45 @@ a {
 
   .recent-purchase-toast {
     left: 10px;
-    right: 10px;
-    max-width: calc(100vw - 20px);
-    bottom: 74px;
+    right: auto;
+    max-width: calc(100vw - 76px);
+    bottom: 72px;
+  }
+
+  .toast-card-inner {
+    padding: 8px 10px;
+    gap: 8px;
+    border-radius: var(--rounded-lg);
+  }
+
+  .toast-avatar {
+    font-size: 1.15rem;
+  }
+
+  .toast-header-line {
+    font-size: 0.76rem;
+  }
+
+  .toast-desc {
+    font-size: 0.72rem;
+  }
+
+  .toast-time {
+    font-size: 0.65rem;
   }
 
   .floating-product-widget {
-    bottom: 85px;
-    right: 14px;
+    bottom: 72px;
+    right: 8px;
   }
 
   .floating-product-dance-wrap {
-    width: 58px;
+    width: 50px; /* Scaled down ~12% for perfect mobile balance */
   }
 
   .floating-widget-badge {
-    font-size: 0.65rem;
-    padding: 2px 8px;
+    font-size: 0.6rem;
+    padding: 2px 6px;
   }
 }
 
