@@ -718,7 +718,7 @@ a {
   background: var(--surface-container-low);
   border: 1px solid var(--surface-container-high);
   border-radius: var(--rounded-lg);
-  padding: 12px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -758,10 +758,10 @@ a {
 
 .exp-gif-media {
   width: 100%;
-  aspect-ratio: 16 / 9.5;
+  aspect-ratio: 16 / 9.8;
   object-fit: cover;
   display: block;
-  transform: scale(1.05);
+  transform: scale(1.08);
   transform-origin: center center;
   transition: transform var(--transition-normal);
 }
