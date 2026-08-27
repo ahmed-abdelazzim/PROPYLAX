@@ -477,6 +477,109 @@
 
 
   /* ==========================================================================
+     8. MOBILE REVIEWS CAROUSEL (AUTO-SLIDE & SWIPE ONLY ON MOBILE)
+     ========================================================================== */
+  function initReviewsMobileCarousel() {
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    const cards = document.querySelectorAll('.review-card');
+    const dots = document.querySelectorAll('.review-dot');
+
+    if (!reviewsGrid || cards.length === 0) return;
+
+    let currentReview = 0;
+    let autoPlayTimer = null;
+    const totalReviews = cards.length;
+
+    function showReview(index) {
+      if (index < 0) index = totalReviews - 1;
+      if (index >= totalReviews) index = 0;
+
+      currentReview = index;
+
+      cards.forEach((card, i) => {
+        if (i === currentReview) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentReview) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    // Dot click listeners
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const idx = parseInt(dot.dataset.index, 10);
+        if (!isNaN(idx)) {
+          showReview(idx);
+          resetAutoPlay();
+        }
+      });
+    });
+
+    // Touch swipe support on reviews grid
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    reviewsGrid.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    reviewsGrid.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 35) {
+        if (diff > 0) {
+          showReview(currentReview - 1);
+        } else {
+          showReview(currentReview + 1);
+        }
+      }
+      startAutoPlay();
+    }, { passive: true });
+
+    // Auto Play every 4.5s on mobile screens
+    function startAutoPlay() {
+      if (window.innerWidth <= 768) {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(() => {
+          showReview(currentReview + 1);
+        }, 4500);
+      }
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    function resetAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
+    }
+
+    startAutoPlay();
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        stopAutoPlay();
+      } else if (!autoPlayTimer) {
+        startAutoPlay();
+      }
+    }, { passive: true });
+  }
+
+  /* ==========================================================================
      9. STICKY FLOATING BOTTOM PURCHASE BAR
      ========================================================================== */
   function initStickyPurchaseBar() {
@@ -680,6 +783,7 @@
     initCountdownTimer();
     initLiveView();
     initProductSlider();
+    initReviewsMobileCarousel();
     initOrderSummary();
     initPhoneValidation();
     initOrderForm();

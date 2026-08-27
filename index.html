@@ -372,10 +372,10 @@
           <p class="section-sub-title">شاهد ماذا يقول عملاؤنا بعد استخدام دهان PROPYLAX GEL للعناية بالركبة والظهر:</p>
         </div>
 
-        <div class="reviews-grid">
+        <div class="reviews-grid" id="reviewsGrid">
           
           <!-- Review 1 -->
-          <div class="review-card">
+          <div class="review-card active" data-review="0">
             <div class="review-top">
               <div class="reviewer-avatar">د.و</div>
               <div class="reviewer-meta">
@@ -395,7 +395,7 @@
           </div>
 
           <!-- Review 2 -->
-          <div class="review-card">
+          <div class="review-card" data-review="1">
             <div class="review-top">
               <div class="reviewer-avatar avatar-purple">م.ش</div>
               <div class="reviewer-meta">
@@ -415,7 +415,7 @@
           </div>
 
           <!-- Review 3 -->
-          <div class="review-card">
+          <div class="review-card" data-review="2">
             <div class="review-top">
               <div class="reviewer-avatar avatar-blue">م.س</div>
               <div class="reviewer-meta">
@@ -434,6 +434,13 @@
             <div class="review-footer-badge">⚡ سهولة الحركة وصعود السلالم</div>
           </div>
 
+        </div>
+
+        <!-- Mobile Carousel Navigation Dots -->
+        <div class="reviews-slider-dots" id="reviewsSliderDots">
+          <button type="button" class="review-dot active" data-index="0" aria-label="عرض التقييم الأول"></button>
+          <button type="button" class="review-dot" data-index="1" aria-label="عرض التقييم الثاني"></button>
+          <button type="button" class="review-dot" data-index="2" aria-label="عرض التقييم الثالث"></button>
         </div>
       </div>
     </section>

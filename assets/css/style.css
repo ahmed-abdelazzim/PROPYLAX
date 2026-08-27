@@ -2057,6 +2057,10 @@ a {
   border: 1px solid var(--surface-container-high);
 }
 
+.reviews-slider-dots {
+  display: none;
+}
+
 /* ==========================================================================
    SECTION 1.6: MEDICAL FAQ ACCORDION
    ========================================================================== */
@@ -2643,6 +2647,61 @@ a {
 /* ==========================================================================
    MOBILE & SMALL DEVICES OPTIMIZATIONS (iPhone, Galaxy, Pixel)
    ========================================================================== */
+@media (max-width: 768px) {
+  .reviews-grid {
+    display: block;
+    position: relative;
+    width: 100%;
+    min-height: 195px;
+  }
+
+  .review-card {
+    display: none;
+    width: 100%;
+    animation: fadeInSlideReview 0.35s ease-out;
+  }
+
+  .review-card.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes fadeInSlideReview {
+    from {
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .reviews-slider-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .review-dot {
+    width: 20px;
+    height: 6px;
+    border-radius: var(--rounded-full);
+    background: var(--surface-container-high);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    padding: 0;
+  }
+
+  .review-dot.active {
+    width: 30px;
+    background: var(--secondary);
+  }
+}
+
 @media (max-width: 600px) {
   .landing-container {
     padding: 12px 14px 48px;
@@ -2650,10 +2709,6 @@ a {
 
   .section {
     padding: 24px 0;
-  }
-
-  .reviews-grid {
-    grid-template-columns: 1fr;
   }
 
   .faq-question {
