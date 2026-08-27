@@ -2420,6 +2420,92 @@ a {
 }
 
 /* ==========================================================================
+   FLOATING WIGGLE DANCE PRODUCT WIDGET
+   ========================================================================== */
+.floating-product-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 995;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--transition-bounce), filter var(--transition-fast);
+}
+
+.floating-widget-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.floating-widget-badge {
+  background: linear-gradient(135deg, var(--color-cta) 0%, #ea580c 100%);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--rounded-full);
+  box-shadow: 0 4px 12px rgba(238, 108, 29, 0.4);
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: badgeBounce 2s infinite ease-in-out;
+}
+
+@keyframes badgeBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.floating-product-dance-wrap {
+  width: 76px;
+  height: auto;
+  animation: productWiggleDance 3.5s infinite ease-in-out;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 10px 20px rgba(0, 109, 55, 0.35));
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.floating-widget-link:hover .floating-product-dance-wrap {
+  animation-play-state: paused;
+  transform: scale(1.12) rotate(4deg);
+  filter: drop-shadow(0 16px 28px rgba(0, 109, 55, 0.5));
+}
+
+.floating-tube-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Wiggle / Dance Animation */
+@keyframes productWiggleDance {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-8px) rotate(-8deg);
+  }
+  30% {
+    transform: translateY(-14px) rotate(7deg);
+  }
+  45% {
+    transform: translateY(-6px) rotate(-6deg);
+  }
+  60% {
+    transform: translateY(-10px) rotate(4deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+  90% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ==========================================================================
    5. RESPONSIVE BREAKPOINTS (DESKTOP & TABLET ENHANCEMENTS)
    ========================================================================== */
 
@@ -2647,6 +2733,20 @@ a {
     right: 10px;
     max-width: calc(100vw - 20px);
     bottom: 74px;
+  }
+
+  .floating-product-widget {
+    bottom: 85px;
+    right: 14px;
+  }
+
+  .floating-product-dance-wrap {
+    width: 58px;
+  }
+
+  .floating-widget-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
   }
 }
 
