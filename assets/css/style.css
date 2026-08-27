@@ -2226,12 +2226,17 @@ a {
 }
 
 .sticky-thumb-img {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--rounded-default);
-  object-fit: cover;
-  border: 1px solid var(--surface-container-high);
-  box-shadow: 0 2px 8px rgba(0, 27, 21, 0.08);
+  width: 34px;
+  height: auto;
+  max-height: 44px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 109, 55, 0.3));
+  display: block;
+  flex-shrink: 0;
 }
 
 .sticky-text-block {
@@ -2868,7 +2873,17 @@ a {
   }
 
   .sticky-thumb-img {
-    display: none;
+    width: 26px;
+    height: auto;
+    max-height: 34px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 109, 55, 0.25));
+    display: block;
+    flex-shrink: 0;
   }
 
   .sticky-name {
